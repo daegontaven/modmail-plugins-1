@@ -257,13 +257,7 @@ class Fun(Cog):
             else:
                 new += letter
         await ctx.send(new)
-    @commands.Cog.listener()
-    async def on_ready(self):
-        async with self.bot.session.post(
-            "http://www.modmailplugins.tk:3000/api/instances/fun",
-            json={"id": self.bot.user.id},
-        ):
-            print("Posted to Plugin API")
+    
             
     @commands.command()
     async def cringe(self,ctx,* ,message):
@@ -276,6 +270,7 @@ class Fun(Cog):
                 text_list[i]=text_list[i].upper()
         message ="".join(text_list) #convert list back to string(message) to print it as a word
         await ctx.send(message)
+        await ctx.message.delete()
 
       
 def setup(bot):
